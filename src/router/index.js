@@ -14,12 +14,6 @@ const routes = [{
     component: Home
   },
   {
-    path: "/about",
-    name: "About",
-    component: () =>
-      import("../views/About.vue")
-  },
-  {
     path: "/products",
     name: "products",
     component: () =>
@@ -52,6 +46,11 @@ const routes = [{
         path: "products", //內層的斜線可以省略
         component: () =>
           import("../views/admin/Products.vue")
+      },
+      {
+        path: "product/:id", //內層的斜線可以省略
+        component: () =>
+          import("../views/admin/Product.vue")
       },
       {
         path: "orders", //內層的斜線可以省略
