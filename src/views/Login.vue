@@ -1,6 +1,9 @@
 <template>
   <div>
-    <form class="form-signin" @submit.prevent="signin">
+    <loading :active.sync="isLoading"></loading>
+    <div class="container">
+      <div class="form-signin">
+      <form class="form-signin" @submit.prevent="signin">
         <h1 class="h3 mb-3 font-weight-normal">
           後台管理者登入頁面
         </h1>
@@ -21,6 +24,9 @@
           &copy; 2020~∞ - 六角學院
         </p>
       </form>
+      </div>
+    </div>
+    
   </div>
 </template>
 
@@ -41,12 +47,13 @@ export default {
   methods: {
       signin(){
         const api = `${process.env.VUE_APP_APIPATH}/api/auth/login`;
+        this.isLoading = true;
         this.$http.post(api, this.user).then((res)=>{
           const token = res.data.token;
           const expired = res.data.expired;
           //把token 存進 cookie
           document.cookie = `token=${token};expires=${new Date(expired * 1000)}`;
-          
+          this.isLoading = false;
           //登入成功的話轉換頁面
           this.$router.push('/admin');
         }).catch((err) =>{
@@ -56,4 +63,13 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+  .form-signin{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+  }
+</style>
 

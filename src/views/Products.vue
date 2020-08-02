@@ -1,7 +1,15 @@
 <template>
   <div class="products">
     <loading :active.sync="isLoading"></loading>
-    <table>
+    <div class="container">
+    <table class="table table-hover" v-if="products.length">
+      <thead>
+        <tr>
+          <th>產品名稱</th>
+          <th>查看產品細節</th>
+        </tr>
+      </thead>
+      <tbody>
       <tr v-for="item in products" :key="item.id">
         <td> {{ item.title }} </td>
         <td>
@@ -12,7 +20,9 @@
           <!-- <button type="button" @click="goPath(item.id)">查看商品細節</button> -->
         </td>
       </tr>
+      </tbody>
     </table>
+    </div>
   </div>
 </template>
 
@@ -21,7 +31,7 @@ export default {
   // 因為 Loading 使用全域的方式引入，所以可以在任何地方呼叫他
   data() {
     return {
-      products:[]
+      products:[],
     };
   },
   created() {
