@@ -1,14 +1,6 @@
 <template>
   <div id="app">
     <loading :active.sync="isLoading"></loading>
-    <div id="nav">
-      <router-link to="/">首頁</router-link>|
-      <router-link to="/about">關於商店</router-link>|
-      <router-link to="/products">產品列表</router-link>|
-      <router-link to="/cart">購物車</router-link>|
-      <router-link to="/login">後台登入</router-link>|
-    </div>
-      <hr>
     <router-view />
   </div>
 </template>
@@ -21,7 +13,7 @@ export default {
     return {
       isLoading: false
     };
-  }
+  },
 };
 </script>
 
@@ -34,16 +26,4 @@ export default {
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

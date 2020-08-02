@@ -2,7 +2,7 @@
   <div>
     <form class="form-signin" @submit.prevent="signin">
         <h1 class="h3 mb-3 font-weight-normal">
-          請先登入
+          後台管理者登入頁面
         </h1>
         <div class="form-group">
           <label for="inputEmail" class="sr-only">Email address</label>
@@ -48,7 +48,7 @@ export default {
           document.cookie = `token=${token};expires=${new Date(expired * 1000)}`;
           
           //登入成功的話轉換頁面
-          this.$router.push('/admin/products');
+          this.$router.push('/admin');
         }).catch((err) =>{
           console.log(err)
         })
