@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     <div>後台的產品列表頁面</div>
     <table>
       <tr>
@@ -25,7 +26,6 @@ export default {
   //   token:String
   // },
   created() {
-    
     //後台 API
     const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/products`;
     this.isLoading = true;

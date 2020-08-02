@@ -7,9 +7,9 @@
         <td>
           <!-- 進入的方式有兩種 -->
           <!-- 第一種：透過 router-link -->
-          <!-- <router-link :to="`/product/${item.id}`">查看商品細節</router-link> -->
+          <router-link :to="`/product/${item.id}`">查看商品細節</router-link>
           <!-- 第二種：透過方法，使用 @click="自定義的方法" -->
-          <button type="button" @click="goPath(item.id)">查看商品細節</button>
+          <!-- <button type="button" @click="goPath(item.id)">查看商品細節</button> -->
         </td>
       </tr>
     </table>
@@ -37,13 +37,12 @@ export default {
       });
   },
   methods: {
-    goPath(id){
+    // goPath(id){
       // 進入特定頁面：
       // (1) $route:只能取值
       // (2) $router：方法
-      this.$router.push(`/product/${id}`)
-      
-    }
+      // this.$router.push(`/product/${id}`)
+    // }
   },
 }
 </script>
