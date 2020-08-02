@@ -1,18 +1,24 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <div>後台的產品列表頁面</div>
-    <table>
+    <div class="container">
+    <table class="table table-hover" v-if="products.length">
+      <thead>
       <tr>
         <th>產品名稱</th>
-        <th></th>
+        <th>產品描述</th>
+        <th>查看商品細節</th>
       </tr>
+      </thead>
+      <tbody>
       <tr v-for="(item, index) in products" :key="index">
-        <td>{{ item.title }}</td>
-        <td> {{ item.content }} </td>
-        <td> <router-link :to="`/admin/product/${item.id}`"> 看產品 </router-link> </td>
+        <td> {{ item.title }} </td>
+        <td class="text-left"> {{ item.content }} </td>
+        <td> <router-link :to="`/admin/product/${item.id}`"> 查看商品細節 </router-link> </td>
       </tr>
+      </tbody>
     </table>
+    </div>
   </div>
 </template>
 <script>
@@ -22,9 +28,9 @@ export default {
       products: [],
     };
   },
-  // props: {
-  //   token:String
-  // },
+  props: {
+    token:String
+  },
   created() {
     //後台 API
     const url = `${process.env.VUE_APP_APIPATH}api/${process.env.VUE_APP_UUID}/admin/ec/products`;

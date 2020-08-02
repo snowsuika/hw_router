@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active.sync="isLoading"></loading>
     {{ product.title }}
   </div>
 </template>
@@ -11,9 +12,9 @@ export default {
       product:{},
     }
   },
-  // props: {
-  //   token:String
-  // },
+  props: {
+    token:String
+  },
   created() {
     const ProductId = this.$route.params.id;
     this.isLoading = true;
