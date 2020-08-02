@@ -1,12 +1,21 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <loading :active.sync="isLoading"></loading>
     <router-view />
   </div>
 </template>
+
+<script>
+//這邊所有的元件都是採用 export default 的方式把元件給匯出出來
+export default {
+  // 因為 Loading 使用全域的方式引入，所以可以在任何地方呼叫他
+  data() {
+    return {
+      isLoading: false
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
@@ -17,16 +26,4 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
