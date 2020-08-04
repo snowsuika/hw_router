@@ -6,31 +6,31 @@ Vue.use(VueRouter);
 const routes = [
   // 所有的路由都會經過這一段，避免用戶進入錯誤連結
   {
-    path: "*", 
-    redirect:'/', 
+    path: "*",
+    redirect: '/',
   },
   {
     path: "/",
-    component:()=>import("../views/Home.vue"),
-    children:[
+    component: () => import("../views/Home.vue"),
+    children: [
       //預設子路由
       {
         path: "",
         name: "FrontEnd",
         component: () => import("../views/Index.vue")
-          
+
       },
       {
         path: "/index",
         name: "index",
         component: () => import("../views/Index.vue")
-          
+
       },
       {
         path: "/products",
         name: "products",
         component: () => import("../views/Products.vue")
-          
+
       },
       {
         path: "/product/:id", //冒號後面是可以自定義的
@@ -52,23 +52,23 @@ const routes = [
       },
     ]
   },
-  
+
   //需要做驗證
   {
     path: '/admin',
     component: () =>
       import("../views/Dashboard.vue"),
-      children: [
-        //預設子路由
-        {
-          path: '', //內層的斜線可以省略
-          name :'admin',
-          component: () =>
-            import("../views/admin/Products.vue")
-        },
+    children: [
+      //預設子路由
+      {
+        path: '', //內層的斜線可以省略
+        name: 'admin',
+        component: () =>
+          import("../views/admin/Products.vue")
+      },
       {
         path: 'products', //內層的斜線可以省略
-        name :'products',
+        name: 'products',
         component: () =>
           import("../views/admin/Products.vue")
       },
@@ -86,6 +86,11 @@ const routes = [
         path: "orders", //內層的斜線可以省略
         component: () =>
           import("../views/admin/Orders.vue")
+      },
+      {
+        path: "imagelist", //內層的斜線可以省略
+        component: () =>
+          import("../views/admin/Imagelist.vue")
       },
     ]
   }
